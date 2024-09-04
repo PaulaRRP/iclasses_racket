@@ -28,8 +28,9 @@
 (define (result-of stmt Δ)
   (match stmt
     [(ast:assign (ast:var x) e) (display "assignment unimplemented")]
-    [(ast:print e) (display (value-of e Δ))
-                   #;(display "print unimplemented")]
+    [(ast:print e) (begin 
+                     (display (value-of e Δ))
+                     (newline))]
     [(ast:return e) (value-of e Δ)]
     [(ast:block stmts) (display "block unimplemented")]
     [(ast:if-stmt e s1 s2) (display "if statment unimplemented")]
@@ -48,4 +49,3 @@
        ; you must collect all the classes declared and building its respectively environment
        ; execute the prog expression in the correct environment
        (result-of stmt init-env))]))
-
